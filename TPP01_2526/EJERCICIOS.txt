@@ -1,0 +1,85 @@
+    /* EJERCICIO 1:
+    Crea una clase Cliente en el proyecto librería de clases. 
+    
+    Crea los atributos y los getters / setters de:
+        id (string)
+        nombre (string)
+        apellido (string)
+        edad (int)
+        Status (enum: {VIP, Business, Standard})
+
+    Añade un constructor que solamente reciba nombre.
+
+    Crea un cliente e imprímelo por pantalla:
+        Cliente c1 = new Cliente("Alice");
+        Console.WriteLine($"Hola, {c.GetNombre()}!");
+
+    */
+
+    /* EJERCICIO 2:
+        Transforma el código anterior para que use propiedades
+        
+            Opción 1: 
+                public string Nombre {get; set;}
+
+            Opción 2:
+                private string _nombre;
+                public string Nombre
+                {
+                
+                    get { return _nombre; }
+
+                    set
+                    { 
+                        _nombre = value; 
+                    }
+                }
+
+        Cliente c2 = new Cliente { Nombre = "Alice", Edad = 30 };
+        //¿Qué ventajas e incovenientes presenta la sintaxis anterior?
+        //La edad no puede ser inferior a 0. ¿Qué implicaciones tiene esto en el código?
+    */
+
+    /* 
+        EJERCICIO 3:
+        Imprime directamente un cliente por consola. 
+        Soluciona el problema.
+    */
+
+
+    /* EJERCICIO 4:
+       Define una clase Order que modela un pedido con:
+        - identificador
+        - nombre del cliente
+        - número de artículos
+        - precio unitario
+        - gastos de envío
+        - subtotal
+        - total (sumando al anterior los gastos de envío)
+        - estado del pedido representado por el enum OrderStatus (borrador, pagado, enviado, entregado o cancelado).
+    */
+
+    /* EJERCICIO 5:
+        Define una clase HotelStay que representa una estancia en un hotel con:
+        - identificador
+        - nombre del hotel
+        - fechas de entrada (DateTime)
+        - fecha de salida (DateTime)
+        - tarifa por noche 
+        - número de noches (mínimo 0, nunca negativo)
+        - importe total
+        - régimen de comidas mediante el enum MealPlan (solo alojamiento, desayuno, media pensión o pensión completa).
+
+        La fecha de entrada no puede ser posterior a la fecha de salida
+
+        Inicializa un objeto con las propiedades en este orden
+        {
+            Id = //,
+            Hotel = //,
+            FechaEntrada = //posterior a fecha salida,
+            FechaSalida = //,
+            TarifaPorNoche = //,
+            RegimenComidas = //
+        };
+        
+    */
