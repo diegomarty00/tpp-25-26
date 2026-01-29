@@ -1,0 +1,12 @@
+C:\Users\uo270457\tpp-25-26\TPP01_2526\Practica Obligatoria\Personas\bin\Debug\net8.0\Personas.deps.json
+C:\Users\uo270457\tpp-25-26\TPP01_2526\Practica Obligatoria\Personas\bin\Debug\net8.0\Personas.dll
+C:\Users\uo270457\tpp-25-26\TPP01_2526\Practica Obligatoria\Personas\bin\Debug\net8.0\Personas.pdb
+C:\Users\uo270457\tpp-25-26\TPP01_2526\Practica Obligatoria\Personas\obj\Debug\net8.0\Personas.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\uo270457\tpp-25-26\TPP01_2526\Practica Obligatoria\Personas\obj\Debug\net8.0\Personas.AssemblyInfoInputs.cache
+C:\Users\uo270457\tpp-25-26\TPP01_2526\Practica Obligatoria\Personas\obj\Debug\net8.0\Personas.AssemblyInfo.cs
+C:\Users\uo270457\tpp-25-26\TPP01_2526\Practica Obligatoria\Personas\obj\Debug\net8.0\Personas.csproj.CoreCompileInputs.cache
+C:\Users\uo270457\tpp-25-26\TPP01_2526\Practica Obligatoria\Personas\obj\Debug\net8.0\Personas.sourcelink.json
+C:\Users\uo270457\tpp-25-26\TPP01_2526\Practica Obligatoria\Personas\obj\Debug\net8.0\Personas.dll
+C:\Users\uo270457\tpp-25-26\TPP01_2526\Practica Obligatoria\Personas\obj\Debug\net8.0\refint\Personas.dll
+C:\Users\uo270457\tpp-25-26\TPP01_2526\Practica Obligatoria\Personas\obj\Debug\net8.0\Personas.pdb
+C:\Users\uo270457\tpp-25-26\TPP01_2526\Practica Obligatoria\Personas\obj\Debug\net8.0\ref\Personas.dll

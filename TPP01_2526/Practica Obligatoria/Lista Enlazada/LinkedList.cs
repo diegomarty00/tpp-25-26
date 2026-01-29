@@ -2,8 +2,9 @@
 
 public class LinkedList
 {
-    private Node? Head { get; set; }
-    public uint NumberOfElements { get; private set; }
+    private Node Head { get; set; }
+
+    public int Count { get; private set; }
 
     /**
     * Añade un nuevo elemento al final de la lista
@@ -13,14 +14,13 @@ public class LinkedList
         if (IsEmpty())
         {
             this.Head = new Node(item, null);
-            this.NumberOfElements++;
         }
         else
         {
-            Node last = GetNode(NumberOfElements - 1);
+            Node last = GetNode((uint)Count - 1);
             last.Next = new Node(item, null);
-            this.NumberOfElements++;
         }
+        this.Count++;
     }
 
     /**
@@ -28,7 +28,7 @@ public class LinkedList
     */
     public Object ElementAt(int index)
     {
-        if (index < 0 || index >= NumberOfElements)
+        if (index < 0 || index >= Count)
         {
             throw new IndexOutOfRangeException();
         }
@@ -40,7 +40,7 @@ public class LinkedList
     */
     public void Set(int index, Object item)
     {
-        if (index < 0 || index >= NumberOfElements)
+        if (index < 0 || index >= Count)
         {
             throw new IndexOutOfRangeException();
         }
@@ -53,7 +53,7 @@ public class LinkedList
     */
     public void Insert(int index, Object item)
     {
-        if (index < 0 || index > NumberOfElements)
+        if (index < 0 || index > Count)
         {
             throw new IndexOutOfRangeException();
         }
@@ -66,7 +66,7 @@ public class LinkedList
             Node previous = GetNode((uint)(index - 1));
             previous.Next = new Node(item, previous.Next);
         }
-        NumberOfElements++;
+        Count++;
     }
 
     /**
@@ -77,10 +77,10 @@ public class LinkedList
         Node? current = Head;
         while (current != null)
         {
-            if (current.Data.Equals(item))
-            {
+            if (current.Data == null && item == null)
                 return true;
-            }
+            if (current.Data != null && current.Data.Equals(item))
+                return true;
             current = current.Next;
         }
         return false;
@@ -92,35 +92,41 @@ public class LinkedList
     public bool Remove(Object item)
     {
         if (IsEmpty())
-        {
             return false;
-        }
-        if (Head.Data.Equals(item))
+
+        // Caso especial: eliminar la cabeza
+        if ((Head.Data == null && item == null) ||
+            (Head.Data != null && Head.Data.Equals(item)))
         {
             Head = Head.Next;
-            NumberOfElements--;
+            Count--;
             return true;
         }
-        Node? current = Head;
-        while (current.Next != null && !current.Next.Data.Equals(item))
+
+        Node current = Head;
+
+        while (current.Next != null)
         {
+            if ((current.Next.Data == null && item == null) ||
+                (current.Next.Data != null && current.Next.Data.Equals(item)))
+            {
+                current.Next = current.Next.Next;
+                Count--;
+                return true;
+            }
             current = current.Next;
         }
-        if (current.Next != null)
-        {
-            current.Next = current.Next.Next;
-            NumberOfElements--;
-            return true;
-        }
+
         return false;
     }
+
 
     /**
     * Elimina el elemento en la posición indicada.
     */
     public void RemoveAt(int index)
     {
-        if (index < 0 || index >= NumberOfElements)
+        if (index < 0 || index >= Count)
         {
             throw new IndexOutOfRangeException();
         }
@@ -133,7 +139,7 @@ public class LinkedList
             Node previous = GetNode((uint)(index - 1));
             previous.Next = previous.Next.Next;
         }
-        NumberOfElements--;
+        Count--;
     }
 
     /**
@@ -142,13 +148,14 @@ public class LinkedList
     public void Clear()
     {
         Head = null;
-        NumberOfElements = 0;
+        Count = 0;
     }
 
-    private bool IsEmpty()
+    public bool IsEmpty()
     {
-        return NumberOfElements == 0;
+        return Count == 0;
     }
+
     private Node GetNode(uint index)
     {
         uint currentIndex = 0;
@@ -163,10 +170,10 @@ public class LinkedList
 
     private class Node
     {
-        public Object Data { get; set; }
-        public Node Next { get; set; }
+        public Object? Data { get; set; }
+        public Node? Next { get; set; }
 
-        public Node(Object data, Node next)
+        public Node(Object? data, Node? next)
         {
             this.Data = data;
             this.Next = next;

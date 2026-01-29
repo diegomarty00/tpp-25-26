@@ -10,6 +10,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Lista Enlazada\Lista Enlazada.csproj" />
+    <ProjectReference Include="..\Personas\Personas.csproj" />
   </ItemGroup>
 
 </Project>

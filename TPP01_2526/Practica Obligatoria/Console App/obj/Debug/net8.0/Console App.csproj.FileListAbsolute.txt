@@ -1,0 +1,21 @@
+C:\Users\uo270457\tpp-25-26\TPP01_2526\Practica Obligatoria\Console App\bin\Debug\net8.0\Console App.exe
+C:\Users\uo270457\tpp-25-26\TPP01_2526\Practica Obligatoria\Console App\bin\Debug\net8.0\Console App.deps.json
+C:\Users\uo270457\tpp-25-26\TPP01_2526\Practica Obligatoria\Console App\bin\Debug\net8.0\Console App.runtimeconfig.json
+C:\Users\uo270457\tpp-25-26\TPP01_2526\Practica Obligatoria\Console App\bin\Debug\net8.0\Console App.dll
+C:\Users\uo270457\tpp-25-26\TPP01_2526\Practica Obligatoria\Console App\bin\Debug\net8.0\Console App.pdb
+C:\Users\uo270457\tpp-25-26\TPP01_2526\Practica Obligatoria\Console App\bin\Debug\net8.0\Lista Enlazada.dll
+C:\Users\uo270457\tpp-25-26\TPP01_2526\Practica Obligatoria\Console App\bin\Debug\net8.0\Personas.dll
+C:\Users\uo270457\tpp-25-26\TPP01_2526\Practica Obligatoria\Console App\bin\Debug\net8.0\Lista Enlazada.pdb
+C:\Users\uo270457\tpp-25-26\TPP01_2526\Practica Obligatoria\Console App\bin\Debug\net8.0\Personas.pdb
+C:\Users\uo270457\tpp-25-26\TPP01_2526\Practica Obligatoria\Console App\obj\Debug\net8.0\Console App.csproj.AssemblyReference.cache
+C:\Users\uo270457\tpp-25-26\TPP01_2526\Practica Obligatoria\Console App\obj\Debug\net8.0\Console App.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\uo270457\tpp-25-26\TPP01_2526\Practica Obligatoria\Console App\obj\Debug\net8.0\Console App.AssemblyInfoInputs.cache
+C:\Users\uo270457\tpp-25-26\TPP01_2526\Practica Obligatoria\Console App\obj\Debug\net8.0\Console App.AssemblyInfo.cs
+C:\Users\uo270457\tpp-25-26\TPP01_2526\Practica Obligatoria\Console App\obj\Debug\net8.0\Console App.csproj.CoreCompileInputs.cache
+C:\Users\uo270457\tpp-25-26\TPP01_2526\Practica Obligatoria\Console App\obj\Debug\net8.0\Console App.sourcelink.json
+C:\Users\uo270457\tpp-25-26\TPP01_2526\Practica Obligatoria\Console App\obj\Debug\net8.0\Console .E477417D.Up2Date
+C:\Users\uo270457\tpp-25-26\TPP01_2526\Practica Obligatoria\Console App\obj\Debug\net8.0\Console App.dll
+C:\Users\uo270457\tpp-25-26\TPP01_2526\Practica Obligatoria\Console App\obj\Debug\net8.0\refint\Console App.dll
+C:\Users\uo270457\tpp-25-26\TPP01_2526\Practica Obligatoria\Console App\obj\Debug\net8.0\Console App.pdb
+C:\Users\uo270457\tpp-25-26\TPP01_2526\Practica Obligatoria\Console App\obj\Debug\net8.0\Console App.genruntimeconfig.cache
+C:\Users\uo270457\tpp-25-26\TPP01_2526\Practica Obligatoria\Console App\obj\Debug\net8.0\ref\Console App.dll
