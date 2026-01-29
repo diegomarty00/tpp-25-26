@@ -1,11 +1,30 @@
 {
   "version": 3,
   "targets": {
-    "net8.0": {}
+    "net8.0": {
+      "Lista Enlazada/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v8.0",
+        "compile": {
+          "bin/placeholder/Lista Enlazada.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Lista Enlazada.dll": {}
+        }
+      }
+    }
   },
-  "libraries": {},
+  "libraries": {
+    "Lista Enlazada/1.0.0": {
+      "type": "project",
+      "path": "../Lista Enlazada/Lista Enlazada.csproj",
+      "msbuildProject": "../Lista Enlazada/Lista Enlazada.csproj"
+    }
+  },
   "projectFileDependencyGroups": {
-    "net8.0": []
+    "net8.0": [
+      "Lista Enlazada >= 1.0.0"
+    ]
   },
   "packageFolders": {
     "C:\\Users\\Diego\\.nuget\\packages\\": {}
@@ -13,11 +32,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Diego\\Documents\\GitHub\\tpp-25-26\\TPP01_2526\\Library\\Library.csproj",
-      "projectName": "Library",
-      "projectPath": "C:\\Users\\Diego\\Documents\\GitHub\\tpp-25-26\\TPP01_2526\\Library\\Library.csproj",
+      "projectUniqueName": "C:\\Users\\Diego\\Documents\\GitHub\\tpp-25-26\\TPP01_2526\\Practica Obligatoria\\Console App\\Console App.csproj",
+      "projectName": "Console App",
+      "projectPath": "C:\\Users\\Diego\\Documents\\GitHub\\tpp-25-26\\TPP01_2526\\Practica Obligatoria\\Console App\\Console App.csproj",
       "packagesPath": "C:\\Users\\Diego\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Diego\\Documents\\GitHub\\tpp-25-26\\TPP01_2526\\Library\\obj\\",
+      "outputPath": "C:\\Users\\Diego\\Documents\\GitHub\\tpp-25-26\\TPP01_2526\\Practica Obligatoria\\Console App\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Diego\\AppData\\Roaming\\NuGet\\NuGet.Config"
@@ -31,7 +50,11 @@
       "frameworks": {
         "net8.0": {
           "targetAlias": "net8.0",
-          "projectReferences": {}
+          "projectReferences": {
+            "C:\\Users\\Diego\\Documents\\GitHub\\tpp-25-26\\TPP01_2526\\Practica Obligatoria\\Lista Enlazada\\Lista Enlazada.csproj": {
+              "projectPath": "C:\\Users\\Diego\\Documents\\GitHub\\tpp-25-26\\TPP01_2526\\Practica Obligatoria\\Lista Enlazada\\Lista Enlazada.csproj"
+            }
+          }
         }
       },
       "warningProperties": {

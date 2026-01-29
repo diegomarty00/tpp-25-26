@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Diego\\Documents\\GitHub\\tpp-25-26\\TPP01_2526\\Library\\Library.csproj": {}
+    "C:\\Users\\Diego\\Documents\\GitHub\\tpp-25-26\\TPP01_2526\\Practica Obligatoria\\Lista Enlazada\\Lista Enlazada.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Diego\\Documents\\GitHub\\tpp-25-26\\TPP01_2526\\Library\\Library.csproj": {
+    "C:\\Users\\Diego\\Documents\\GitHub\\tpp-25-26\\TPP01_2526\\Practica Obligatoria\\Lista Enlazada\\Lista Enlazada.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Diego\\Documents\\GitHub\\tpp-25-26\\TPP01_2526\\Library\\Library.csproj",
-        "projectName": "Library",
-        "projectPath": "C:\\Users\\Diego\\Documents\\GitHub\\tpp-25-26\\TPP01_2526\\Library\\Library.csproj",
+        "projectUniqueName": "C:\\Users\\Diego\\Documents\\GitHub\\tpp-25-26\\TPP01_2526\\Practica Obligatoria\\Lista Enlazada\\Lista Enlazada.csproj",
+        "projectName": "Lista Enlazada",
+        "projectPath": "C:\\Users\\Diego\\Documents\\GitHub\\tpp-25-26\\TPP01_2526\\Practica Obligatoria\\Lista Enlazada\\Lista Enlazada.csproj",
         "packagesPath": "C:\\Users\\Diego\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Diego\\Documents\\GitHub\\tpp-25-26\\TPP01_2526\\Library\\obj\\",
+        "outputPath": "C:\\Users\\Diego\\Documents\\GitHub\\tpp-25-26\\TPP01_2526\\Practica Obligatoria\\Lista Enlazada\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Diego\\AppData\\Roaming\\NuGet\\NuGet.Config"
