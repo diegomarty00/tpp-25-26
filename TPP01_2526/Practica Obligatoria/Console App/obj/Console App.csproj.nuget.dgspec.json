@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\uo270457\\tpp-25-26\\TPP01_2526\\Practica Obligatoria\\Console App\\Console App.csproj": {}
+    "C:\\Users\\uo270457\\Documents\\GitHub\\tpp-25-26\\TPP01_2526\\Practica Obligatoria\\Console App\\Console App.csproj": {}
   },
   "projects": {
-    "C:\\Users\\uo270457\\tpp-25-26\\TPP01_2526\\Practica Obligatoria\\Console App\\Console App.csproj": {
+    "C:\\Users\\uo270457\\Documents\\GitHub\\tpp-25-26\\TPP01_2526\\Practica Obligatoria\\Console App\\Console App.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\uo270457\\tpp-25-26\\TPP01_2526\\Practica Obligatoria\\Console App\\Console App.csproj",
+        "projectUniqueName": "C:\\Users\\uo270457\\Documents\\GitHub\\tpp-25-26\\TPP01_2526\\Practica Obligatoria\\Console App\\Console App.csproj",
         "projectName": "Console App",
-        "projectPath": "C:\\Users\\uo270457\\tpp-25-26\\TPP01_2526\\Practica Obligatoria\\Console App\\Console App.csproj",
+        "projectPath": "C:\\Users\\uo270457\\Documents\\GitHub\\tpp-25-26\\TPP01_2526\\Practica Obligatoria\\Console App\\Console App.csproj",
         "packagesPath": "C:\\Users\\uo270457\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\uo270457\\tpp-25-26\\TPP01_2526\\Practica Obligatoria\\Console App\\obj\\",
+        "outputPath": "C:\\Users\\uo270457\\Documents\\GitHub\\tpp-25-26\\TPP01_2526\\Practica Obligatoria\\Console App\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -22,7 +22,7 @@
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
-          "net8.0"
+          "net9.0"
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
@@ -30,14 +30,14 @@
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
-          "net8.0": {
-            "targetAlias": "net8.0",
+          "net9.0": {
+            "targetAlias": "net9.0",
             "projectReferences": {
-              "C:\\Users\\uo270457\\tpp-25-26\\TPP01_2526\\Practica Obligatoria\\Lista Enlazada\\Lista Enlazada.csproj": {
-                "projectPath": "C:\\Users\\uo270457\\tpp-25-26\\TPP01_2526\\Practica Obligatoria\\Lista Enlazada\\Lista Enlazada.csproj"
+              "C:\\Users\\uo270457\\Documents\\GitHub\\tpp-25-26\\TPP01_2526\\Practica Obligatoria\\Lista Enlazada\\Lista Enlazada.csproj": {
+                "projectPath": "C:\\Users\\uo270457\\Documents\\GitHub\\tpp-25-26\\TPP01_2526\\Practica Obligatoria\\Lista Enlazada\\Lista Enlazada.csproj"
               },
-              "C:\\Users\\uo270457\\tpp-25-26\\TPP01_2526\\Practica Obligatoria\\Personas\\Personas.csproj": {
-                "projectPath": "C:\\Users\\uo270457\\tpp-25-26\\TPP01_2526\\Practica Obligatoria\\Personas\\Personas.csproj"
+              "C:\\Users\\uo270457\\Documents\\GitHub\\tpp-25-26\\TPP01_2526\\Practica Obligatoria\\Personas\\Personas.csproj": {
+                "projectPath": "C:\\Users\\uo270457\\Documents\\GitHub\\tpp-25-26\\TPP01_2526\\Practica Obligatoria\\Personas\\Personas.csproj"
               }
             }
           }
@@ -55,8 +55,8 @@
         "SdkAnalysisLevel": "9.0.300"
       },
       "frameworks": {
-        "net8.0": {
-          "targetAlias": "net8.0",
+        "net9.0": {
+          "targetAlias": "net9.0",
           "imports": [
             "net461",
             "net462",
@@ -77,14 +77,14 @@
         }
       }
     },
-    "C:\\Users\\uo270457\\tpp-25-26\\TPP01_2526\\Practica Obligatoria\\Lista Enlazada\\Lista Enlazada.csproj": {
+    "C:\\Users\\uo270457\\Documents\\GitHub\\tpp-25-26\\TPP01_2526\\Practica Obligatoria\\Lista Enlazada\\Lista Enlazada.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\uo270457\\tpp-25-26\\TPP01_2526\\Practica Obligatoria\\Lista Enlazada\\Lista Enlazada.csproj",
+        "projectUniqueName": "C:\\Users\\uo270457\\Documents\\GitHub\\tpp-25-26\\TPP01_2526\\Practica Obligatoria\\Lista Enlazada\\Lista Enlazada.csproj",
         "projectName": "Lista Enlazada",
-        "projectPath": "C:\\Users\\uo270457\\tpp-25-26\\TPP01_2526\\Practica Obligatoria\\Lista Enlazada\\Lista Enlazada.csproj",
+        "projectPath": "C:\\Users\\uo270457\\Documents\\GitHub\\tpp-25-26\\TPP01_2526\\Practica Obligatoria\\Lista Enlazada\\Lista Enlazada.csproj",
         "packagesPath": "C:\\Users\\uo270457\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\uo270457\\tpp-25-26\\TPP01_2526\\Practica Obligatoria\\Lista Enlazada\\obj\\",
+        "outputPath": "C:\\Users\\uo270457\\Documents\\GitHub\\tpp-25-26\\TPP01_2526\\Practica Obligatoria\\Lista Enlazada\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -95,7 +95,7 @@
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
-          "net8.0"
+          "net9.0"
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
@@ -103,8 +103,8 @@
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
-          "net8.0": {
-            "targetAlias": "net8.0",
+          "net9.0": {
+            "targetAlias": "net9.0",
             "projectReferences": {}
           }
         },
@@ -121,8 +121,8 @@
         "SdkAnalysisLevel": "9.0.300"
       },
       "frameworks": {
-        "net8.0": {
-          "targetAlias": "net8.0",
+        "net9.0": {
+          "targetAlias": "net9.0",
           "imports": [
             "net461",
             "net462",
@@ -143,14 +143,14 @@
         }
       }
     },
-    "C:\\Users\\uo270457\\tpp-25-26\\TPP01_2526\\Practica Obligatoria\\Personas\\Personas.csproj": {
+    "C:\\Users\\uo270457\\Documents\\GitHub\\tpp-25-26\\TPP01_2526\\Practica Obligatoria\\Personas\\Personas.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\uo270457\\tpp-25-26\\TPP01_2526\\Practica Obligatoria\\Personas\\Personas.csproj",
+        "projectUniqueName": "C:\\Users\\uo270457\\Documents\\GitHub\\tpp-25-26\\TPP01_2526\\Practica Obligatoria\\Personas\\Personas.csproj",
         "projectName": "Personas",
-        "projectPath": "C:\\Users\\uo270457\\tpp-25-26\\TPP01_2526\\Practica Obligatoria\\Personas\\Personas.csproj",
+        "projectPath": "C:\\Users\\uo270457\\Documents\\GitHub\\tpp-25-26\\TPP01_2526\\Practica Obligatoria\\Personas\\Personas.csproj",
         "packagesPath": "C:\\Users\\uo270457\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\uo270457\\tpp-25-26\\TPP01_2526\\Practica Obligatoria\\Personas\\obj\\",
+        "outputPath": "C:\\Users\\uo270457\\Documents\\GitHub\\tpp-25-26\\TPP01_2526\\Practica Obligatoria\\Personas\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -161,7 +161,7 @@
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
-          "net8.0"
+          "net9.0"
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
@@ -169,8 +169,8 @@
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
-          "net8.0": {
-            "targetAlias": "net8.0",
+          "net9.0": {
+            "targetAlias": "net9.0",
             "projectReferences": {}
           }
         },
@@ -187,8 +187,8 @@
         "SdkAnalysisLevel": "9.0.300"
       },
       "frameworks": {
-        "net8.0": {
-          "targetAlias": "net8.0",
+        "net9.0": {
+          "targetAlias": "net9.0",
           "imports": [
             "net461",
             "net462",

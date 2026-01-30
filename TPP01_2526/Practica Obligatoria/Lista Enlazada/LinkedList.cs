@@ -87,7 +87,9 @@ public class LinkedList
     }
 
     /**
-    *  Busca si el objeto que se le pasa como parámetro está en la lista. Si lo encuentra, lo elimina y devuelve true. Si no lo encuentra, devuelve false
+    *  Busca si el objeto que se le pasa como parámetro está en la lista. 
+    *  Si lo encuentra, lo elimina y devuelve true. 
+    *  Si no lo encuentra, devuelve false
     */
     public bool Remove(Object item)
     {
