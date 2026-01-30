@@ -49,6 +49,21 @@ class Program
             que reciba un array de object con elementos de distintos tipos (int, string, double)
             y devuelva cuántos de esos elementos son string.
         */
+        Console.WriteLine("Número de strings: " + ContarStrings(new object[] { 1, "Hola", 3.14, "Mundo", 42, "C#" }));
+    }
+
+
+    static int ContarStrings(object[] items)
+    {
+        int contador = 0;
+        foreach (object item in items)
+        {
+            if (item is string)
+            {
+                contador++;
+            }
+        }
+        return contador;
     }
 
     static int Unboxing(object o)
