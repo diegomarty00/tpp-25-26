@@ -2,7 +2,7 @@
 
 public class LinkedList
 {
-    private Node Head { get; set; }
+    private Node _head;
 
     public int Count { get; private set; }
 
@@ -13,7 +13,7 @@ public class LinkedList
     {
         if (IsEmpty())
         {
-            this.Head = new Node(item, null);
+            this._head = new Node(item, null);
         }
         else
         {
@@ -59,7 +59,7 @@ public class LinkedList
         }
         if (index == 0)
         {
-            Head = new Node(item, Head);
+            _head = new Node(item, _head);
         }
         else
         {
@@ -74,7 +74,7 @@ public class LinkedList
     */
     public bool Contains(Object item)
     {
-        Node? current = Head;
+        Node? current = _head;
         while (current != null)
         {
             if (current.Data == null && item == null)
@@ -97,15 +97,15 @@ public class LinkedList
             return false;
 
         // Caso especial: eliminar la cabeza
-        if ((Head.Data == null && item == null) ||
-            (Head.Data != null && Head.Data.Equals(item)))
+        if ((_head.Data == null && item == null) ||
+            (_head.Data != null && _head.Data.Equals(item)))
         {
-            Head = Head.Next;
+            _head = _head.Next;
             Count--;
             return true;
         }
 
-        Node current = Head;
+        Node current = _head;
 
         while (current.Next != null)
         {
@@ -134,7 +134,7 @@ public class LinkedList
         }
         if (index == 0)
         {
-            Head = Head.Next;
+            _head = _head.Next;
         }
         else
         {
@@ -149,7 +149,7 @@ public class LinkedList
     */
     public void Clear()
     {
-        Head = null;
+        _head = null;
         Count = 0;
     }
 
@@ -161,7 +161,7 @@ public class LinkedList
     private Node GetNode(uint index)
     {
         uint currentIndex = 0;
-        Node currentNode = Head;
+        Node currentNode = _head;
         while (currentIndex < index)
         {
             currentIndex++;
