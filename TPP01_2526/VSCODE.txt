@@ -1,0 +1,25 @@
+1. Instala la extensión C# Dev Kit en VSCODE
+
+2. Crea una carpeta y ábrela en el VSCODE
+
+3. Abre una terminal (o desde línea de comandos en la carpeta), crea una solución:
+	dotnet new sln -n lab01
+
+4. Clic derecho en el fichero sln -> Open Solution
+
+5. A partir de aquí, usando la paleta de comandos de VSCODE, crearemos:
+	- Proyectos de Consola (Console App)
+	- Proyectos de Biblioteca de Clases (Class Library)
+	- Proyectos de test (más adelante)
+
+6. Durante la creación de un proyecto: "Show all template options"
+	- Framework .NET: versión 8.0
+		- Si no está. Instálala con el comando > .NET: Install New .NET SDK 
+	- Do not use top-level statements: TRUE
+
+	
+NOTA: La paleta de comandos, espera que añadas al principio el carácter >
+	Alternativamente, puedes usar la combinación: Control + Shift + P
+	
+NOTA(2): Generar documentación: <GenerateDocumentationFile>true</GenerateDocumentationFile>
+		

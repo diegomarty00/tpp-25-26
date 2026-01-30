@@ -1,0 +1,7 @@
+# Ignorar todas las carpetas y subcarpetas obj y bin
+**/obj/
+**/bin/
+**/Debug/
+**/Release/
+**/net9.0/
+**/net8.0/
