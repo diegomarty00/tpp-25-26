@@ -4,13 +4,13 @@ public class InmutableList
 {
 
     public int Count { get; private set; }
-    private Object[] _list;
+    private Object?[] _list;
 
     /// <summary>
     /// Constructor de la lista inmutable
     /// </summary>
     /// <param name="items">Array de objetos a incluir en la lista</param>
-    public InmutableList(Object[]? items)
+    public InmutableList(Object?[]? items = null)
     {
         this.Count = items?.Length ?? 0;
         this._list = new Object[this.Count];
@@ -25,9 +25,9 @@ public class InmutableList
     /// </summary>
     /// <param name="item">Elemento a añadir</param>
     /// <returns>Nueva lista con el elemento añadido</returns>
-    public InmutableList Add(Object item)
+    public InmutableList Add(Object? item)
     {
-        Object[] newList = new Object[this.Count + 1];
+        Object?[] newList = new Object[this.Count + 1];
         for (int i = 0; i < this.Count; i++)
         {
             newList[i] = this._list[i];
@@ -42,7 +42,7 @@ public class InmutableList
     /// <param name="index">Posición del elemento a obtener</param>
     /// <returns>Elemento en la posición indicada</returns>
     /// <exception cref="IndexOutOfRangeException"></exception>
-    public Object ElementAt(int index)
+    public Object? ElementAt(int index)
     {
         if (index < 0 || index >= this.Count)
             throw new IndexOutOfRangeException();
@@ -58,12 +58,12 @@ public class InmutableList
     /// <param name="item">Nuevo elemento</param>
     /// <returns>Nueva lista con el elemento sustituido</returns>
     /// <exception cref="IndexOutOfRangeException"></exception>
-    public InmutableList Set(int index, Object item)
+    public InmutableList Set(int index, Object? item)
     {
         if (index < 0 || index >= this.Count)
             throw new IndexOutOfRangeException();
 
-        Object[] newList = new Object[this.Count];
+        Object?[] newList = new Object[this.Count];
 
         for (int i = 0; i < this.Count; i++)
             newList[i] = this._list[i];
@@ -80,12 +80,12 @@ public class InmutableList
     /// <param name="item">Elemento a añadir</param>
     /// <returns>Nueva lista con el elemento añadido</returns>
     /// <exception cref="IndexOutOfRangeException"></exception>
-    public InmutableList Insert(int index, Object item)
+    public InmutableList Insert(int index, Object? item)
     {
         if (index < 0 || index > this.Count)
             throw new IndexOutOfRangeException();
 
-        Object[] newList = new Object[this.Count + 1];
+        Object?[] newList = new Object?[this.Count + 1];
 
         for (int i = 0; i < index; i++)
             newList[i] = this._list[i];
@@ -106,33 +106,33 @@ public class InmutableList
     /// True --> el elemento está en la lista
     /// False --> en caso contrario
     /// </returns>
-    public bool Contains(Object item)
+    public bool Contains(Object? item)
     {
         for (int i = 0; i < this.Count; i++)
-            if (this._list[i].Equals(item))
+            if (Equals(this._list[i], item))
                 return true;
         return false;
     }
 
 
-/// <summary>
-///  Busca si el objeto que se le pasa como parámetro está en la lista.
-/// </summary>
-/// <param name="item">Elemento a buscar</param>
-/// <returns>Nueva lista sin el elemento indicado</returns>
-    public InmutableList Remove(object item)
+    /// <summary>
+    ///  Busca si el objeto que se le pasa como parámetro está en la lista.
+    /// </summary>
+    /// <param name="item">Elemento a buscar</param>
+    /// <returns>Nueva lista sin el elemento indicado</returns>
+    public InmutableList Remove(Object? item)
     {
         int occurrences = 0;
         for (int i = 0; i < this.Count; i++)
-            if (this._list[i].Equals(item))
+            if(Equals(this._list[i], item))
                 occurrences++;
 
-        Object[] newList = new Object[this.Count - occurrences];
+        Object?[] newList = new Object?[this.Count - occurrences];
         int newIndex = 0;
 
         for (int i = 0; i < this.Count; i++)
         {
-            if (!this._list[i].Equals(item))
+            if(!Equals(this._list[i], item))
             {
                 newList[newIndex] = this._list[i];
                 newIndex++;
@@ -143,18 +143,18 @@ public class InmutableList
     }
 
 
-/// <summary>
-///  Elimina el elemento en la posición indicada
-/// </summary>
-/// <param name="index">Posición del elemento a eliminar</param>
-/// <returns>Nueva lista sin el elemento indicado</returns>
-/// <exception cref="IndexOutOfRangeException"></exception>
+    /// <summary>
+    ///  Elimina el elemento en la posición indicada
+    /// </summary>
+    /// <param name="index">Posición del elemento a eliminar</param>
+    /// <returns>Nueva lista sin el elemento indicado</returns>
+    /// <exception cref="IndexOutOfRangeException"></exception>
     public InmutableList RemoveAt(int index)
     {
         if (index < 0 || index >= this.Count)
             throw new IndexOutOfRangeException();
 
-        Object[] newList = new Object[this.Count - 1];
+        Object?[] newList = new Object?[this.Count - 1];
         int newIndex = 0;
 
         for (int i = 0; i < this.Count; i++)
@@ -175,7 +175,12 @@ public class InmutableList
     /// <returns>Nueva lista vacía</returns>
     public InmutableList Clear()
     {
-        return new InmutableList(new Object[0]);
+        return new InmutableList();
+    }
+
+    public override string ToString()
+    {
+        return $"InmutableList({string.Join(", ", _list.Select(x => x?.ToString() ?? "null"))})";
     }
 
 }
