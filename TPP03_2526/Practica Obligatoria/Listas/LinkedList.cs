@@ -1,6 +1,6 @@
-﻿namespace Lista_Inmutable;
+namespace Listas;
 
-public class LinkedList: IComparable<Object>
+public class LinkedList
 {
     private Node _head;
 
