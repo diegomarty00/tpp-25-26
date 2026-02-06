@@ -9,7 +9,7 @@ class Program
        // Paleta de comandos: .NET: Select a Configuration > Release > Any Configuration
        // o dentro la carpeta de un proyecto: dotnet run --configuration Release
        
-        EjemploSimple(); // ¿Debug vs Release?
+        //EjemploSimple(); // ¿Debug vs Release?
         EjemploProgramacionDefensiva();
     }
 
@@ -26,7 +26,8 @@ class Program
 
         //Release vs Debug.
         var array = new int[] { 1,2,3,4 };
-        Debug.Assert(TryEmptyArray(array), "El array era null o estaba vacío, no se puede vaciar.");
+        var resultado = TryEmptyArray(array);
+        Debug.Assert(resultado, "El array era null o estaba vacío, no se puede vaciar.");
         Console.WriteLine($"Array: {string.Join(", ", array)}");
     }
 
