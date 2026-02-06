@@ -6,6 +6,16 @@ public class InmutableList
     public int Count { get; private set; }
     private Object?[] _list;
 
+    private LinkedList _linkedList;
+
+
+    // Esto es lo que se tendría que hacer, usar la LinkedList
+    private InmutableList(LinkedList list)
+    {
+        this.Count = list.Length;
+        this._linkedList = list;
+    }
+
     /// <summary>
     /// Constructor de la lista inmutable
     /// </summary>
