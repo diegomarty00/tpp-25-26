@@ -3,12 +3,14 @@ using System.Collections;
 
 namespace EjemploIEnumerable;
 
+
+//TAREA - Que no sea un bucle infinito, e implementar el reset
 class Program
 {
     static void Main(string[] args)
     {
         EjemploSimple();
-        // EjemploRango();
+        EjemploRango();
     }
 
     private static void EjemploSimple()

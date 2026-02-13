@@ -10,7 +10,7 @@ namespace Temperaturas;
 /// Celsius no solamente se compara con Celsius, también con Fahrenhit (y al revés)
 /// Permitir mezclas de tipos -> potencialmente casts -> errores en ejecucion.
 /// </summary>
-public class Fahrenheit : IComparable<Fahrenheit>, IComparable<Celsius>, IComparable
+public class Fahrenheit : IComparable<Celsius>, IComparable<Fahrenheit>, IComparable
 {
     public double Grados { get; }
 
