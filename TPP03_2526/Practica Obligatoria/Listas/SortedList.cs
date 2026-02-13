@@ -17,6 +17,7 @@ public class SortedList
         List = new LinkedList();
     }
 
+    
     public void Add(IComparable item)
     {
 
