@@ -21,6 +21,8 @@ class Program
         // Implementa la versión currificada de EstaEnRango
         // Empleando la anterior, crea "EstaEnEdadLaboral" [16, 67]
         // Currifica la función Suma. En cada devolución, la función solamente recibirá un único valor
+        var EstaEnEdadLaboral = CurriedEstaEnRango(16)(67);
+        Console.WriteLine($"¿Está 20 en edad laboral? {EstaEnEdadLaboral(20)}");
 
 
     }
@@ -38,5 +40,12 @@ class Program
     static bool EstaEnRango(int min, int max, int x)
     {
         return x >= min && x <= max;
+    }
+
+    static Func<int, Func<int, bool>> CurriedEstaEnRango(int min)
+    {
+        return max => 
+                    x => 
+                        x >= min && x <= max;
     }
 }

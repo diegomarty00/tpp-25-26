@@ -59,6 +59,7 @@ class Program
     /***************************************************************************
      * ¿Tiene sentido memoizar estas funciones?
      ***/
+     // No es determinista, no es puro, no es referencialmente transparente, no es idempotente, no es inmutable, no es thread-safe
     static int SimulacionCalculoCosteAlto(int x, int y, int z)
     {
         // Simulamos una operación de coste alto
@@ -68,36 +69,40 @@ class Program
     }
 
     static int counter = 0;
+    // No es determinista, no es puro, no es referencialmente transparente, no es idempotente, no es inmutable, no es thread-safe
     static int SimulacionProcesoCalculoCosteAlto(int x, int y, int z)
     {
         // Simulamos una operación de coste alto
         Thread.Sleep(1000);
 
-        counter += x + y + z;
+        counter += x + y + z; // Esto es un efecto secundario que hace que la función no sea pura ni referencialmente transparente, además de no ser idempotente ni inmutable.
         return x + y + z;
     }
 
+    // No es determinista, no es puro, no es referencialmente transparente, no es idempotente, no es inmutable, no es thread-safe
     static int CalcularConLog(int x, int y, int z)
     {
         // Simulamos una operación de coste alto
         Thread.Sleep(1000);
 
         int r = x + y + z;
-        File.AppendAllText("audit.log", $"Calculado {r} en {DateTime.Now:O}\n");
+        File.AppendAllText("audit.log", $"Calculado {r} en {DateTime.Now:O}\n"); // Esto es un efecto secundario que hace que la función no sea pura ni referencialmente transparente, además de no ser idempotente ni inmutable.
         return r;
     }
 
+    // No es determinista, no es puro, no es referencialmente transparente, no es idempotente, no es inmutable, no es thread-safe
     static int FuncionDeterministaEntradaMutableCosteAlto(List<int> xs)
     {
         // Simulamos una operación de coste alto
         Thread.Sleep(1000);
-        return xs.Sum();
+        return xs.Sum(); // Aunque el resultado es siempre el mismo para la misma lista, la función no es pura ni referencialmente transparente porque la lista es mutable y puede cambiar entre llamadas, lo que afectaría al resultado. Además, no es idempotente ni inmutable.
     }
 
+    // No es determinista, no es puro, no es referencialmente transparente, no es idempotente, no es inmutable, no es thread-safe
     static string HashFile(string path)
     {
-        using var stream = File.OpenRead(path);
-        using var sha = SHA256.Create();
+        using var stream = File.OpenRead(path); 
+        using var sha = SHA256.Create(); 
         return Convert.ToHexString(sha.ComputeHash(stream));
     }
 }
