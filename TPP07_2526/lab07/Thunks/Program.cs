@@ -2,6 +2,13 @@
 
 namespace Thunks;
 
+
+// Un Thunk es una función sin parámetros que encapsula una operación que se desea ejecutar de forma diferida (lazy), 
+// es decir, en un momento posterior al que se ha definido. 
+
+// En este ejemplo, cada acción que se añade a la lista de acciones es un thunk que encapsula la lógica de renombrar un fichero específico, 
+// incluyendo la captura y restauración de metadatos. Esto permite planificar todas las operaciones necesarias antes de ejecutarlas, 
+// lo que puede ayudar a evitar estados inconsistentes en caso de errores durante el proceso.
 class Program
 {
     static void Main()
@@ -31,7 +38,8 @@ class Program
             List<string> ficherosCreados = CrearTemporales(carpeta, 10);
             List<(string src, string dst)> ficherosMovidos = new List<(string src, string dst)>();
             RenombrarFicherosV2(carpeta, extensionVieja, extensionNueva,
-                (src, dst) => {
+                (src, dst) =>
+                {
                     ficherosMovidos.Add((src, dst));
                 },
                 fichero => DateTime.UtcNow,
@@ -71,34 +79,34 @@ class Program
 
         // PlanRenombrarFicherosV3
 
-        // IEnumerable<Action>? actions = null;
-        // try
-        // {
-        //     actions = PlanRenombrarFicherosV3(carpeta, extensionVieja, extensionNueva);
-        // }
-        // catch (Exception ex)
-        // {
-        //     Console.WriteLine($"PlanRenombrarFicherosV3 falló en la planificación: {ex.Message}");
-        //     // En este caso, si ocurre un error, no se ha modificado el estado del sistema, por lo que no queda en un estado inconsistente.
-        // }
+        IEnumerable<Action>? actions = null;
+        try
+        {
+            actions = PlanRenombrarFicherosV3(carpeta, extensionVieja, extensionNueva);
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"PlanRenombrarFicherosV3 falló en la planificación: {ex.Message}");
+            // En este caso, si ocurre un error, no se ha modificado el estado del sistema, por lo que no queda en un estado inconsistente.
+        }
 
-        // // Ahora que ya sabemos que todas las acciones son válidas, las ejecutamos.
-        // try
-        // {
-        //     foreach (var action in actions ?? Enumerable.Empty<Action>())
-        //     {
-        //         action();
-        //     }
-        //     Console.WriteLine("PlanRenombrarFicherosV3 completado con éxito.");
-        // }
-        // catch (Exception ex)
-        // {
-        //     Console.WriteLine($"PlanRenombrarFicherosV3 falló en la ejecución: {ex.Message}");
-        // }
+        // Ahora que ya sabemos que todas las acciones son válidas, las ejecutamos.
+        try
+        {
+            foreach (var action in actions ?? Enumerable.Empty<Action>())
+            {
+                action();
+            }
+            Console.WriteLine("PlanRenombrarFicherosV3 completado con éxito.");
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"PlanRenombrarFicherosV3 falló en la ejecución: {ex.Message}");
+        }
 
 
         Directory.Delete(carpeta, recursive: true);
-}
+    }
 
     // ¿Qué ocurre si hay un error en mitad del proceso?
     static void RenombrarFicherosV1(string carpeta, string extensionVieja, string extensionNueva)
@@ -161,8 +169,27 @@ class Program
         {
             var ficheroActual = fichero; // Captura la variable local para evitar problemas con clausuras en versiones anteriores a C# 5.
             // Comprobaciones y ChangeExtension
+            var ficheroNuevo = Path.ChangeExtension(ficheroActual, extensionNueva);
+            if (ficheroNuevo == null) { throw new InvalidOperationException($"Fichero {ficheroActual} no tiene extensión."); }
+            if (ficheroNuevo == ficheroActual) { throw new InvalidOperationException($"Fichero {ficheroActual} ya tiene la extensión {extensionNueva}."); }
+            if (File.Exists(ficheroNuevo)) { throw new InvalidOperationException($"Fichero {ficheroNuevo} ya existe."); }
+
 
             // En cada iteración añadimos un action que: capture metadatos, mueva el fichero y restaure metadatos
+            actions.Add(() =>
+            {
+                // Captura metadatos
+                var creado = File.GetCreationTimeUtc(ficheroActual);
+                var modificado = File.GetLastWriteTimeUtc(ficheroActual);
+
+                // Mueve el archivo
+                File.Move(ficheroActual, ficheroNuevo);
+
+                // Restaura metadatos
+                File.SetCreationTimeUtc(ficheroNuevo, creado);
+                File.SetLastWriteTimeUtc(ficheroNuevo, modificado);
+            });
+
 
         }
         return actions;

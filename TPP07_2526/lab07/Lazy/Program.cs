@@ -39,7 +39,8 @@ class Program
         {
             Console.WriteLine($"  ({DateTime.UtcNow - start}): Buscando y registrando el {n}º número primo.");
 
-            var exito = false; //TryRegNesimoPrimoLazy(...)
+            // Aquí se pasa una función que calcula el primo, pero no se ejecuta hasta que sea necesario dentro de TryRegNesimoPrimoLazy.
+            var exito = TryRegNesimoPrimoLazy(FICHERO_CSV, n, () => CalcNesimoPrimo(n)); 
             if (!exito) { Console.WriteLine($"  ({DateTime.UtcNow - start}): Fallo al registrar el {n}º número primo."); }
             else { Console.WriteLine($"  ({DateTime.UtcNow - start}): Registrado con éxito el {n}º número primo."); }
         }
@@ -93,10 +94,24 @@ class Program
         }
     }
 
-    // static bool TryRegNesimoPrimoLazy(string ficheroCsv, uint n, ....)
-    // {
-    //    return false;
-    //     }
-    // }
+    static bool TryRegNesimoPrimoLazy(string ficheroCsv, uint n, Func<uint> primo)
+    {
+        try
+        {
+            using (var stream = new FileStream(ficheroCsv, FileMode.Open, FileAccess.Write))
+            {
+                stream.Seek(0, SeekOrigin.End);
+                using (var writer = new StreamWriter(stream))
+                {
+                    writer.WriteLine(n + "," + primo);
+                }
+            }
+            return true;
+        }
+        catch
+        {
+            return false;
+        }        
+    }
 
 }
