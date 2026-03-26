@@ -281,17 +281,14 @@ public static class Program
         // ordenando los resultados alfabéticamente por nombre de plataforma.
         Console.WriteLine("Consulta 6");
 
+
         var consulta6 = modelo.Plataformas
-                            .OrderByDescending(p => p.Nombre)
-                            .Join(modelo.Peliculas.OrderBy(p => p.Duracion),
-                                plataforma => plataforma.Nombre,
-                                pelicula => pelicula.Plataforma.Nombre,
-                                (plataforma, pelicula) =>
-                                new
-                                {
-                                    Plaforma = plataforma.Nombre,
-                                    Titulo = pelicula.Titulo
-                                });
+                            .OrderBy(p => p.Nombre)
+                            .Select(p => new
+                            {
+                                Plataforma = p.Nombre,
+                                Titulo = p.Peliculas.Any() ? p.Peliculas.OrderBy(p => p.Duracion).First().Titulo : "-"
+                            });
 
         Show(consulta6);
     }
@@ -301,6 +298,18 @@ public static class Program
         // Obtener, para cada película que tenga valoraciones, la mayor puntuación recibida entre las distintas fuentes de valoración.
         Console.WriteLine("Consulta 7");
 
+        var consulta7 = modelo.Valoraciones
+                            .GroupBy(v => v.IdImdb)
+                            .Join(modelo.Peliculas,
+                                grupoValoraciones => grupoValoraciones.Key,
+                                pelicula => pelicula.IdImdb,
+                                (grupoValoraciones, pelicula) => new
+                                {
+                                    Titulo = pelicula.Titulo,
+                                    MaxPuntuacion = grupoValoraciones.Max(v => v.Votos)
+                                })
+                            .OrderByDescending(p => p.MaxPuntuacion);
 
+        Show(consulta7);
     }
 }
