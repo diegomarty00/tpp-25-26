@@ -41,6 +41,14 @@ namespace TPP.Concurrency.Threads {
                 this.result += this.vector[i] * this.vector[i];
         }
 
+        internal void IsMayor()
+        {
+            this.result = 0;
+            for(int i= this.fromIndex; i<=this.toIndex; i++)
+                if (this.vector[i] >= 7000)
+                    result++;
+        }
+
     }
 
 }

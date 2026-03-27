@@ -6,7 +6,8 @@ namespace TPP.Concurrency.Threads {
 
         static void Main(string[] args) {
             short[] vector = CreateRandomVector(100000, -100, 100);
-
+            const int maximoHilos = 50;
+            
             // * Computation with one single thread
             Master master = new Master(vector, 1);
             DateTime before = DateTime.Now;
@@ -18,6 +19,14 @@ namespace TPP.Concurrency.Threads {
 
             // * Computation with four threads
             master = new Master(vector, 4);
+            before = DateTime.Now;
+            result = master.ComputeModulus();
+            after = DateTime.Now;
+            Console.WriteLine("The result obtained with four threads is: {0:N2}.", result);
+            Console.WriteLine("Elapsed time: {0:N0} ticks.",
+                (after - before).Ticks);
+
+            master = new Master(vector, 50);
             before = DateTime.Now;
             result = master.ComputeModulus();
             after = DateTime.Now;
