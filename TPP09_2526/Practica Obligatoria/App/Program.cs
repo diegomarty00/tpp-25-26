@@ -143,9 +143,9 @@ public static class Program
         // a la duración media de las películas del modelo.
         Console.WriteLine("Consulta 6");
 
-
+        var media = modelo.Peliculas.Average(p => p.Duracion);
         var consulta6 = modelo.Peliculas
-                            .Where(p => p.Duracion > modelo.Peliculas.Average(p => p.Duracion))
+                            .Where(p => p.Duracion > media)
                             .Select(p => new
                             {
                                 Titulo = p.Titulo,
