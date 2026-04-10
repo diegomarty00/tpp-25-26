@@ -6,7 +6,7 @@ class Program
     static void Main(string[] args)
     {
         // 200 elementos con valores en [0, 10]
-        short[] vector = CrearVectorAleatorio(200, 0, 10);
+        short[] vector = CrearVectorAleatorio(20000, 0, 10);
 
         // Recuento de los números 2 y 3 en un vector.
         // Secuencial
