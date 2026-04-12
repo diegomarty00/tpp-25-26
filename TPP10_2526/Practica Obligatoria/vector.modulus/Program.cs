@@ -1,38 +1,14 @@
 ﻿using System;
+using activity10;
+namespace TPP.Concurrency.Threads
+{
 
-namespace TPP.Concurrency.Threads {
-    
-    public class VectorModulusProgram {
+    public class VectorModulusProgram
+    {
 
-        static void Main(string[] args) {
-            short[] vector = CreateRandomVector(100000, -100, 100);
-            const int maximoHilos = 50;
-            
-            // * Computation with one single thread
-            Master master = new Master(vector, 1);
-            DateTime before = DateTime.Now;
-            double result = master.ComputeModulus();
-            DateTime after = DateTime.Now;
-            Console.WriteLine("The result obtained with one single thread is: {0:N2}.", result);
-            Console.WriteLine("Elapsed time: {0:N0} ticks.",
-                (after - before).Ticks );
-
-            // * Computation with four threads
-            master = new Master(vector, 4);
-            before = DateTime.Now;
-            result = master.ComputeModulus();
-            after = DateTime.Now;
-            Console.WriteLine("The result obtained with four threads is: {0:N2}.", result);
-            Console.WriteLine("Elapsed time: {0:N0} ticks.",
-                (after - before).Ticks);
-
-            master = new Master(vector, 50);
-            before = DateTime.Now;
-            result = master.ComputeModulus();
-            after = DateTime.Now;
-            Console.WriteLine("The result obtained with four threads is: {0:N2}.", result);
-            Console.WriteLine("Elapsed time: {0:N0} ticks.",
-                (after - before).Ticks);
+        static void Main(string[] args)
+        {
+            Ejercicio();
         }
 
         /// <summary>
@@ -42,7 +18,8 @@ namespace TPP.Concurrency.Threads {
         /// <param name="lowest">The lowest value to be used in the generation of vector elements</param>
         /// <param name="greatest">The greatest value to be used in the generation of vector elements</param>
         /// <returns>The random vector</returns>
-        public static short[] CreateRandomVector(int numberOfElements, short lowest, short greatest) {
+        public static short[] CreateRandomVector(int numberOfElements, short lowest, short greatest)
+        {
             short[] vector = new short[numberOfElements];
             Random random = new Random();
             for (int i = 0; i < numberOfElements; i++)
@@ -50,6 +27,41 @@ namespace TPP.Concurrency.Threads {
             return vector;
         }
 
+
+        public static long CountSequential(BitcoinValueData[] data, double threshold)
+        {
+            long count = 0;
+            foreach (var d in data)
+                if (d.Value >= threshold)
+                    count++;
+            return count;
+        }
+
+        public static void Ejercicio()
+        {
+            
+            BitcoinValueData[] data = Utils.GetBitcoinData();
+            double threshold = 7000;
+
+            CountSequential(data, threshold);
+            Console.WriteLine("hilos;ejecucion;ticks");
+            for (int threads = 1; threads <= 50; threads++)
+            {
+                for (int run = 0; run < 15; run++)
+                {
+                    Master master = new Master(data, threads, threshold);
+
+                    DateTime before = DateTime.Now;
+                    long result = master.ComputeCount();
+                    DateTime after = DateTime.Now;
+
+                    Console.WriteLine($"{threads};{run};{(after - before).Ticks}");
+
+                    GC.Collect();
+                    GC.WaitForFullGCComplete();
+                }
+            }
+        }
     }
 
 }

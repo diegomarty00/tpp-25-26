@@ -1,6 +1,6 @@
 ﻿namespace activity10;
 
-internal class Utils
+public class Utils
 {
     public static bool Verbose = false;
 
@@ -46,7 +46,7 @@ internal class Utils
     {
         List<BitcoinValueData> listToReturn = new List<BitcoinValueData>();
 
-        foreach (string file in Directory.EnumerateFiles("../../../data", "*.txt"))
+        foreach (string file in Directory.EnumerateFiles("../activity10/data", "*.txt"))
         {
             if (Verbose)
                 Console.WriteLine("Reading file '" + file + "' ...");

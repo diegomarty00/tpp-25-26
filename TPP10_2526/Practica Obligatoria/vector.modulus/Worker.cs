@@ -1,33 +1,47 @@
-﻿
-namespace TPP.Concurrency.Threads {
+﻿using activity10;
+using System;
+namespace TPP.Concurrency.Threads
+{
 
     /// <summary>
-    /// Computes the addition of the square values of part of a vector
+    /// Computes the addition of the square values of part of a data array
     /// </summary>
-    internal class Worker {
+    internal class Worker
+    {
 
         /// <summary>
-        /// The vector whose modulus is going to be computed.
+        /// The data array whose modulus is going to be computed.
         /// </summary>
-        private short[] vector;
+        private BitcoinValueData[] data;
 
         /// <summary>
-        /// Indices of the vector indicating the elements to be used in the computation.
+        /// Indices of the data array indicating the elements to be used in the computation.
         /// Both fromIndex and toIndex are included in the process.
         /// </summary>
         private int fromIndex, toIndex;
+        private double threshold;
 
         /// <summary>
         /// The result of the computation
         /// </summary>
         private long result;
 
-        internal long Result {
+        internal long Result
+        {
             get { return this.result; }
         }
 
-        internal Worker(short[] vector, int fromIndex, int toIndex) {
-            this.vector = vector;
+        public Worker(BitcoinValueData[] data, int fromIndex, int toIndex, double threshold)
+        {
+            this.data = data;
+            this.fromIndex = fromIndex;
+            this.toIndex = toIndex;
+            this.threshold = threshold;
+        }
+
+        public Worker(BitcoinValueData[] data, int fromIndex, int toIndex)
+        {
+            this.data = data;
             this.fromIndex = fromIndex;
             this.toIndex = toIndex;
         }
@@ -35,18 +49,14 @@ namespace TPP.Concurrency.Threads {
         /// <summary>
         /// Method that computes the addition of the squares
         /// </summary>
-        internal void Compute() {
-            this.result = 0;
-            for(int i= this.fromIndex; i<=this.toIndex; i++)
-                this.result += this.vector[i] * this.vector[i];
-        }
-
-        internal void IsMayor()
+        internal void Compute()
         {
-            this.result = 0;
-            for(int i= this.fromIndex; i<=this.toIndex; i++)
-                if (this.vector[i] >= 7000)
+            result = 0;
+            for (int i = fromIndex; i <= toIndex; i++)
+            {
+                if (data[i].Value >= threshold)
                     result++;
+            }
         }
 
     }
