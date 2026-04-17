@@ -16,8 +16,8 @@ class Program
         
         // Prueba combinaciones de "tejon" y "zorro" con efectos PixelSepia y PixelAplicarGamma
 
-        string nombreFichero = "tejon";
-        Func<Rgba32,Rgba32> efecto = PixelSepia;
+        string nombreFichero = "zorro";
+        Func<Rgba32,Rgba32> efecto = PixelAplicarGamma;
         string nombreEfecto = efecto == PixelSepia ? "sepia" : "gamma";
         string fichero = Path.Combine(dirImagenes, $"{nombreFichero}.jpg");
 

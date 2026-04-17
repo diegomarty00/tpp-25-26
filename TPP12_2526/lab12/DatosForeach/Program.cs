@@ -40,6 +40,7 @@ class Program
     // Escala dinámicamente el número de hilos creados en función del número de CPUs o cores
     // Escala y gestiona dinámicamente el número de hilos creados en función del Thread Pool
     // Uso del ForEach
+    // Cuidado con los globales y por los posibles conflictos con bloqueos
 
     static void ForEachParalelo(IEnumerable<string> ficheros, string dirDestino)
     {
