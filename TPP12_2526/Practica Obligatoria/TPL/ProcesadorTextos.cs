@@ -2,6 +2,7 @@
 
 using System;
 using System.Text;
+using System.Collections.Concurrent;
 
 public static class ProcesadorTextos
 {
@@ -33,6 +34,37 @@ public static class ProcesadorTextos
         return texto.Split(new char[] { ' ', '\r', '\n', ',', '.', ';', ':', '-', '!', '¡', '¿', '?', '/', '«',
                                         '»', '_', '(', ')', '\"', '*', '\'', 'º', '[', ']', '#' },
             StringSplitOptions.RemoveEmptyEntries);
+    }
+
+
+
+    public static Dictionary<string, int> ContarPalabrasSecuencial(string[] palabras)
+    {
+        Dictionary<string, int> contador = new();
+
+        foreach (var palabra in palabras)
+        {
+            string p = palabra.ToLower();
+            if (contador.ContainsKey(p))
+                contador[p]++;
+            else
+                contador[p] = 1;
+        }
+
+        return contador;
+    }
+
+    public static Dictionary<string, int> ContarPalabrasParalelo(string[] palabras)
+    {
+        ConcurrentDictionary<string, int> contador = new();
+
+        Parallel.ForEach(palabras, palabra =>
+        {
+            string p = palabra.ToLower();
+            contador.AddOrUpdate(p, 1, (_, valorActual) => valorActual + 1);
+        });
+
+        return new Dictionary<string, int>(contador);
     }
 
 }
