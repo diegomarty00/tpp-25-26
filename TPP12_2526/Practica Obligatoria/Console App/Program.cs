@@ -7,30 +7,74 @@ class Program
 {
     static void Main(string[] args)
     {
-        string texto = ProcesadorTextos.LeerFicheroTexto("../../../../clarin.txt");
+        string textoOrigen = ProcesadorTextos.LeerFicheroTexto("../../../../clarin.txt");
+        string texto = "";
+        string aux = "";
+
+        const int MAX_PROCESAMIENTOS = 10;
+
+        for (int i = 0; i < MAX_PROCESAMIENTOS; i++)
+        {
+            aux = texto + " " + textoOrigen;
+            texto = aux;
+        }
+
         string[] palabras = ProcesadorTextos.DividirEnPalabras(texto);
 
-        if (args.Length > 0 && args[0] == "p")
-            IndependientesParalelo(texto, palabras);
-        else
-           IndependientesSecuencial(texto, palabras);
+        var paraleloResult = IndependientesParalelo(palabras);
+        Console.WriteLine();
+        Console.WriteLine("==============================================");
+        Console.WriteLine();
+        var secuencialResult = IndependientesSecuencial(palabras);
+
+        Console.WriteLine();
+        Console.WriteLine("==============================================");
+        Console.WriteLine("El porcentaje de mejora es: " + ((double)(secuencialResult - paraleloResult) / secuencialResult * 100) + " %.");
+        Console.WriteLine("==============================================");
     }
 
-    private static void IndependientesSecuencial(string texto, string[] palabras)
+    private static long IndependientesSecuencial(string[] palabras)
     {
-        Stopwatch sw = Stopwatch.StartNew();
+        Stopwatch sw1 = Stopwatch.StartNew();
         var resultado = ProcesadorTextos.ContarPalabrasSecuencial(palabras);
-        sw.Stop();
-        Console.WriteLine($"[Secuencial] Palabras distintas: {resultadoSec.Count}");
-        Console.WriteLine($"[Secuencial] Tiempo: {sw.ElapsedMilliseconds} ms."); 
+        sw1.Stop();
+        Stopwatch sw2 = Stopwatch.StartNew();
+        var masRepetida = ProcesadorTextos.PalabraMasRepetidaSecuencial(resultado);
+        var menosRepetida = ProcesadorTextos.PalabraMenosRepetidaSecuencial(resultado);
+        sw2.Stop();
+
+        Console.WriteLine($"[Secuencial] Palabras distintas: {resultado.Count}");
+        Console.WriteLine($"[Secuencial] Tiempo Contar: {sw1.ElapsedMilliseconds} ms.");
+        Console.WriteLine("---------------------------------------------");
+        Console.WriteLine($"[Secuencial] Palabra más repetida: {masRepetida.Key} ({masRepetida.Value} veces)");
+        Console.WriteLine($"[Secuencial] Palabra menos repetida: {menosRepetida.Key} ({menosRepetida.Value} veces)");
+        Console.WriteLine($"[Secuencial] Tiempo Buscar: {sw2.ElapsedMilliseconds} ms.");
+        Console.WriteLine("---------------------------------------------");
+        Console.WriteLine("[Secuencial] Suma de tiempos: " + (sw1.ElapsedMilliseconds + sw2.ElapsedMilliseconds) + " ms.");
+
+        return sw1.ElapsedMilliseconds + sw2.ElapsedMilliseconds;
     }
 
-    private static void IndependientesParalelo(string texto, string[] palabras)
+    private static long IndependientesParalelo(string[] palabras)
     {
-        Stopwatch sw = Stopwatch.StartNew();
+        Stopwatch sw1 = Stopwatch.StartNew();
         var resultado = ProcesadorTextos.ContarPalabrasParalelo(palabras);
-        sw.Stop();
+        sw1.Stop();
+
+        Stopwatch sw2 = Stopwatch.StartNew();
+        var masRepetida = ProcesadorTextos.PalabraMasRepetidaParalelo(resultado);
+        var menosRepetida = ProcesadorTextos.PalabraMenosRepetidaParalelo(resultado);
+        sw2.Stop();
+
         Console.WriteLine($"[TPL] Palabras distintas: {resultado.Count}");
-        Console.WriteLine($"[TPL] Tiempo: {sw.ElapsedMilliseconds} ms."); 
+        Console.WriteLine($"[TPL] Tiempo Contar: {sw1.ElapsedMilliseconds} ms.");
+        Console.WriteLine("---------------------------------------------");
+        Console.WriteLine($"[TPL] Palabra más repetida: {masRepetida.Key} ({masRepetida.Value} veces)");
+        Console.WriteLine($"[TPL] Palabra menos repetida: {menosRepetida.Key} ({menosRepetida.Value} veces)");
+        Console.WriteLine($"[TPL] Tiempo Buscar: {sw2.ElapsedMilliseconds} ms.");
+        Console.WriteLine("---------------------------------------------");
+        Console.WriteLine("[TPL] Suma de tiempos: " + (sw1.ElapsedMilliseconds + sw2.ElapsedMilliseconds) + " ms.");
+
+        return sw1.ElapsedMilliseconds + sw2.ElapsedMilliseconds;
     }
 }

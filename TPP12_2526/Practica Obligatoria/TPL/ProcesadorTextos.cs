@@ -54,6 +54,22 @@ public static class ProcesadorTextos
         return contador;
     }
 
+    public static KeyValuePair<string, int> PalabraMasRepetidaSecuencial(
+        Dictionary<string, int> contador)
+    {
+        return contador
+            .OrderByDescending(p => p.Value)
+            .First();
+    }
+
+    public static KeyValuePair<string, int> PalabraMenosRepetidaSecuencial(
+        Dictionary<string, int> contador)
+    {
+        return contador
+            .OrderBy(p => p.Value)
+            .First();
+    }
+
     public static Dictionary<string, int> ContarPalabrasParalelo(string[] palabras)
     {
         ConcurrentDictionary<string, int> contador = new();
@@ -66,5 +82,18 @@ public static class ProcesadorTextos
 
         return new Dictionary<string, int>(contador);
     }
+
+    public static KeyValuePair<string, int> PalabraMasRepetidaParalelo(
+    Dictionary<string, int> contador)
+    {
+        return contador.Aggregate((a, b) => a.Value > b.Value ? a : b);
+    }
+
+    public static KeyValuePair<string, int> PalabraMenosRepetidaParalelo(
+        Dictionary<string, int> contador)
+    {
+        return contador.Aggregate((a, b) => a.Value < b.Value ? a : b);
+    }
+
 
 }
