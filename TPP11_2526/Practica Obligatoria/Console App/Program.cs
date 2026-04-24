@@ -1,48 +1,30 @@
-﻿namespace Console_App;
-
+﻿using System;
 using Listas;
 
-class Program
+namespace Console_App
 {
-    static void Main(string[] args)
+    class Program
     {
-
-        var queue = new ConcurrentQueue<int?>();
-
-        // Productores
-        Task producer1 = Task.Run(() =>
+        static void Main(string[] args)
         {
-            for (int i = 0; i < 5; i++)
-            {
-                queue.Enqueue(i);
-                Console.WriteLine($"Enqueue: {i}");
-            }
-        });
+            var queue = new ConcurrentQueue<int?>();
 
-        Task producer2 = Task.Run(() =>
-        {
-            queue.Enqueue(null);
-            Console.WriteLine("Enqueue: null");
-        });
+            queue.SafePeek();
+            queue.SafeDequeue();
 
-        // Consumidor
-        Task consumer = Task.Run(() =>
-        {
-            int removed = 0;
-            while (removed < 6)
-            {
-                if (!queue.IsEmpty())
-                {
-                    var value = queue.Dequeue();
-                    Console.WriteLine($"Dequeue: {value}");
-                    removed++;
-                }
-            }
-        });
+            queue.Enqueue(1);       // Se añade = 1
+            queue.SafePeek();
+            
+            queue.SafeDequeue();    // Se elimina = 0
+            queue.SafeDequeue();
 
-        Task.WaitAll(producer1, producer2, consumer);
+            queue.Enqueue(2);       // Se añade = 1
+            queue.SafePeek();
+            queue.Enqueue(3);       // Se añade = 2
+            queue.Enqueue(null);    // Se añade = 3
 
-        Console.WriteLine("Finalización correcta.");
+            Console.WriteLine("Elementos encolados: "+ queue.Count);
 
+        }
     }
 }
