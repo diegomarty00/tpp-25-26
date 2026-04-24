@@ -32,7 +32,7 @@ class Program
 
         Console.WriteLine($"[Hilo principal {Thread.CurrentThread.ManagedThreadId}] Pedido en marcha. El hilo principal aún no está bloqueado y puede hacer otras cosas...");
     
-        serveTask.Wait(); // ¿A qué se parece esto?
+        serveTask.Wait(); // ¿A qué se parece esto? Al JOIN
         
         Console.WriteLine($"[Hilo principal {Thread.CurrentThread.ManagedThreadId}] Pedido terminado y entregado.");
     }

@@ -17,36 +17,35 @@ namespace Listas
             get
             {
                 lock (_sync)
-                {
                     return _list.Count;
-                }
             }
         }
         public bool IsEmpty()
         {
             lock (_sync)
-            {
                 return _list.IsEmpty();
-            }
         }
 
         public void Enqueue(T item)
         {
             lock (_sync)
-            {
                 _list.Add(item);
-            }
         }
 
         public T Dequeue()
         {
-            if (!TryDequeue(out T valor))
-                throw new InvalidOperationException("La cola está vacía.");
+            lock (_sync)
+            {
+                if (_list.IsEmpty())
+                    throw new InvalidOperationException("La cola está vacía.");
 
-            return valor;
+                T value = _list.ElementAt(0);
+                _list.RemoveAt(0);
+                return value;
+            }
         }
 
-        private bool TryDequeue(out T valor)
+        public bool TryDequeue(out T valor)
         {
             lock (_sync)
             {
@@ -64,13 +63,16 @@ namespace Listas
 
         public T Peek()
         {
-            if (!TryPeek(out T valor))
-                throw new InvalidOperationException("La cola está vacía.");
+            lock (_sync)
+            {
+                if (_list.IsEmpty())
+                    throw new InvalidOperationException("La cola está vacía.");
 
-            return valor;
+                return _list.ElementAt(0);
+            }
         }
 
-        private bool TryPeek(out T valor)
+        public bool TryPeek(out T valor)
         {
             lock (_sync)
             {
@@ -82,29 +84,6 @@ namespace Listas
 
                 valor = _list.ElementAt(0);
                 return true;
-            }
-        }
-
-
-        public void SafeDequeue(){
-            try
-            {
-                Console.WriteLine("Dequeue: " + Dequeue());
-            }
-            catch (InvalidOperationException ex)
-            {
-                Console.WriteLine("Error en Dequeue: " + ex.Message);
-            }
-        }
-
-        public void SafePeek(){
-            try
-            {
-                Console.WriteLine("Peek: " + Peek());
-            }
-            catch (InvalidOperationException ex)
-            {
-                Console.WriteLine("Error en Peek: " + ex.Message);
             }
         }
     }

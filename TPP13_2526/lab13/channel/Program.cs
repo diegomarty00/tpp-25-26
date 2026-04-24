@@ -34,29 +34,29 @@ class Program
             Console.WriteLine($"[Productor] Intentando escribir el número {i}...");
             
             // VARIANTE A: Escribimos de forma síncrona
-            if (escritor.TryWrite(i))
-                Console.WriteLine($"[Productor] Número {i} escrito en el canal (Sync).");
-            else
-                Console.WriteLine($"[Productor] ERROR: Canal lleno. Número {i} descartado (Sync).");
+            //if (escritor.TryWrite(i))
+            //    Console.WriteLine($"[Productor] Número {i} escrito en el canal (Sync).");
+            //else
+            //    Console.WriteLine($"[Productor] ERROR: Canal lleno. Número {i} descartado (Sync).");
             
 
             // VARIANTE B: Escribimos de forma asíncrona
             // WriteAsync escribirá el número y pausa el método (no el hilo) si está llena
 
-            // await escritor.WriteAsync(i);
-            // Console.WriteLine($"[Productor] Número {i} escrito en el canal (Async).");
+            await escritor.WriteAsync(i);
+            Console.WriteLine($"[Productor] Número {i} escrito en el canal (Async).");
         }
 
         // ESCENARIO B: Bucle Paralelo (TPL)
         // Descomenta esto y comenta el bucle 'for' de arriba para probarlo.
         // Observa el error que se produce y razona el porqué
 
-        // Parallel.For(11, 20, async i => 
-        // {
-        //     Console.WriteLine($"[Productor TPL] Intentando escribir el número {i}...");
-        //     await escritor.WriteAsync(i);
-        //     Console.WriteLine($"[Productor TPL] Número {i} escrito en el canal.");
-        // });
+        await Parallel.ForAsync(11, 20, async (i, cancellationToken) => 
+        {
+             Console.WriteLine($"[Productor TPL] Intentando escribir el número {i}...");
+             await escritor.WriteAsync(i, cancellationToken);
+             Console.WriteLine($"[Productor TPL] Número {i} escrito en el canal.");
+        });
 
 
 

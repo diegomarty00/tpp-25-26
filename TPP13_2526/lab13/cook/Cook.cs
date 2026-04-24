@@ -61,6 +61,8 @@ public class Cook
         await toastTask;
         await coffeeTask;
         await eggTask;
+        
+        // await Task.WhenAll(toastTask, coffeeTask, eggTask); // Esto es lo mejor
 
         Console.WriteLine($"¡Desayuno listo! (Hilo: {Thread.CurrentThread.ManagedThreadId})");
     }
@@ -70,7 +72,7 @@ public class Cook
     {
         Console.WriteLine($"Empezando a tostar el pan... (Hilo antes del await: {Thread.CurrentThread.ManagedThreadId})");
 
-        await Task.Delay(3000); // ¿Es equivalente al Sleep? ¿Qué opinas?
+        await Task.Delay(3000); // ¿Es equivalente al Sleep? ¿Qué opinas? Se para el trabajo, no los hilos, cuidado eh
 
         Console.WriteLine($"Pan tostado. (Hilo después del await: {Thread.CurrentThread.ManagedThreadId})");
     }
