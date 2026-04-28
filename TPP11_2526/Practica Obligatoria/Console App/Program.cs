@@ -3,28 +3,42 @@ using Listas;
 
 namespace Console_App
 {
+
     class Program
     {
         static void Main(string[] args)
         {
-            var queue = new ConcurrentQueue<int?>();
+            var cola = new ConcurrentQueue<int>();
 
-            queue.SafePeek();
-            queue.SafeDequeue();
+            Console.WriteLine("=== Pruebas básicas ===");
 
-            queue.Enqueue(1);       // Se añade = 1
-            queue.SafePeek();
+            cola.Enqueue(10);
+            cola.Enqueue(20);
+            cola.Enqueue(30);
+
+            Console.WriteLine($"Count: {cola.Count}");
+
+            Console.WriteLine($"Peek: {cola.Peek()}");
+
+            Console.WriteLine($"Dequeue: {cola.Dequeue()}");
+            Console.WriteLine($"Dequeue: {cola.Dequeue()}");
+
+            Console.WriteLine($"¿Está vacía?: {cola.IsEmpty()}");
             
-            queue.SafeDequeue();    // Se elimina = 0
-            queue.SafeDequeue();
+            if (cola.TryDequeue(out int valor))
+                Console.WriteLine($"TryDequeue obtuvo: {valor}");
+            else
+                Console.WriteLine("TryDequeue falló");
 
-            queue.Enqueue(2);       // Se añade = 1
-            queue.SafePeek();
-            queue.Enqueue(3);       // Se añade = 2
-            queue.Enqueue(null);    // Se añade = 3
+            if (cola.TryDequeue(out int valor2))
+                Console.WriteLine($"TryDequeue obtuvo: {valor2}");
+            else
+                Console.WriteLine("TryDequeue falló");
 
-            Console.WriteLine("Elementos encolados: "+ queue.Count);
+            Console.WriteLine($"¿Está vacía?: {cola.IsEmpty()}");
 
         }
     }
 }
+
+
